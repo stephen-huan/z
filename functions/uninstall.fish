@@ -11,3 +11,5 @@ set -e Z_CMD
 set -e ZO_CMD
 set -e Z_DATA
 set -e Z_EXCLUDE
+set -e Z_MAX_SCORE
+set -e Z_DECAY

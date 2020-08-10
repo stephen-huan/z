@@ -9,7 +9,7 @@ function __z_add -d "Add PATH to .z file"
 
   if test -f $tmpfile
     set -l path (string replace --all \\ \\\\ $PWD)
-    command awk -v path=$path -v now=(date +%s) -F "|" '
+    command awk -v path=$path -v score=$Z_MAX_SCORE -v decay=$Z_DECAY -v now=(date +%s) -F "|" '
       BEGIN {
           rank[path] = 1
           time[path] = now
@@ -26,8 +26,8 @@ function __z_add -d "Add PATH to .z file"
           count += $2
       }
       END {
-          if( count > 1000 ) {
-              for( i in rank ) print i "|" 0.9*rank[i] "|" time[i] # aging
+          if( count > score ) {
+              for( i in rank ) print i "|" decay*rank[i] "|" time[i] # aging
           }
           else for( i in rank ) print i "|" rank[i] "|" time[i]
       }

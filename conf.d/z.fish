@@ -36,6 +36,14 @@ if not set -q Z_EXCLUDE
   set -U Z_EXCLUDE $HOME
 end
 
+if not set -q Z_MAX_SCORE
+  set -U Z_MAX_SCORE 9000
+end
+
+if not set -q Z_DECAY
+  set -U Z_DECAY 0.99
+end
+
 # Setup completions once first
 __z_complete
 
