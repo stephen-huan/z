@@ -50,7 +50,6 @@ end
 # Setup completions once first
 __z_complete
 
-# Make sure z add happens before other --on-variable functions
-function 0__z_on_variable_pwd --on-variable PWD
+function __z_on_variable_pwd --on-variable PWD
   __z_add
 end
